@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
+  <metadata>
+    <id>revit2027</id>
+    <version>2027.0.4.412</version>
+    <title>Autodesk Revit 2027 (side-by-side safe)</title>
+    <authors>Autodesk</authors>
+    <owners>REPLACE-WITH-YOUR-CHOCOLATEY-USERNAME</owners>
+    <projectUrl>https://www.autodesk.com/products/revit/</projectUrl>
+    <licenseUrl>https://www.autodesk.com/company/terms-of-use/en/general-terms</licenseUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <docsUrl>https://help.autodesk.com/view/RVT/2027/ENU/</docsUrl>
+    <packageSourceUrl>https://github.com/strandvaskare/chocolatey-packages/tree/main/revit2027</packageSourceUrl>
+    <tags>autodesk revit revit2027 bim architecture mep structural admin</tags>
+    <summary>Installs Autodesk Revit 2027 without removing other Revit versions or add-ons.</summary>
+    <description><![CDATA[
+Autodesk Revit is used to design, document, visualize, and deliver architecture, engineering, and construction projects.
+
+## Why this package exists
+
+This package installs **Revit 2027 only** and is safe to use on machines that need to keep other Revit versions. It:
+
+- **Never uninstalls other Revit versions or Revit add-ons.** Firms routinely keep several Revit years installed because project files are locked to the version they were created in.
+- **Is locked to the 2027 release line.** Upgrades only apply 2027.x updates and never jump to a later year.
+- **Never force-closes Revit.** If Revit is running, the install stops with a clear message so nobody loses unsaved work. Retry when Revit is closed.
+- **Respects pending reboots** instead of deleting Windows' reboot-required flag.
+- **Confirms the install actually finished** by checking that Revit 2027 is registered, with a timeout, instead of only watching for a process to exit.
+- **Cleans up** the roughly 20 GB of downloaded and extracted installer files when done.
+- **Checks prerequisites first** (Windows 11, free disk space) and fails early with a clear message.
+
+The installer is downloaded from Autodesk's official distribution server and verified with a SHA-256 checksum. No Autodesk files are embedded in this package. A valid Autodesk license (named user sign-in) is required to use Revit.
+
+## Package parameters
+
+- `/SourcePath:` Install from a local or network copy instead of downloading from Autodesk. Accepts either the official `.7z` archive (checksum is verified) or a folder that already contains the extracted `setup.exe`. Example: `choco install revit2027 --params "'/SourcePath:\\nas\deploy\Revit2027'"`
+- `/IgnoreRunning` Proceed even if a Revit process is running. Revit is still never closed by this package.
+- `/IgnorePendingReboot` Proceed even if Windows reports a pending reboot.
+- `/KeepFiles` Keep the downloaded and extracted installer files after installing.
+- `/NoRestartPrompt` Don't show signed-in users the message asking them to restart when convenient. The package never restarts the computer either way.
+
+## Notes
+
+- Requires Windows 11 64-bit and about 45 GB of free space on the system drive during installation.
+- The download is roughly 10.8 GB. Installation typically takes 5 to 30 minutes depending on the machine and connection.
+- Uninstalling this package removes Revit 2027 and the Autodesk components its installer added for 2027 (for example the 2027 Add-Ins Manager and Steel Connections content). Other Revit years, shared Autodesk components and third-party add-ons are left alone.
+- After installing, signed-in users are asked to restart when convenient. Until a restart, Revit 2027 may not appear in Start menu search, and the first launch can take a minute or more.
+]]></description>
+    <releaseNotes>https://help.autodesk.com/view/RVT/2027/ENU/?guid=RevitReleaseNotes_2027release_html</releaseNotes>
+  </metadata>
+  <files>
+    <file src="tools\**" target="tools" />
+  </files>
+</package>
