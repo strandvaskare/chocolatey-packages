@@ -5,7 +5,7 @@
     <version>2027.0.4.412</version>
     <title>Autodesk Revit 2027 (side-by-side safe)</title>
     <authors>Autodesk</authors>
-    <owners>REPLACE-WITH-YOUR-CHOCOLATEY-USERNAME</owners>
+    <owners>strandvaskare</owners>
     <projectUrl>https://www.autodesk.com/products/revit/</projectUrl>
     <licenseUrl>https://www.autodesk.com/company/terms-of-use/en/general-terms</licenseUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
