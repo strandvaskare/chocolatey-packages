@@ -55,7 +55,15 @@ Expect a manual moderation step. Like the existing `revit` package, the automate
 
 ## Tested
 
-Not yet tested. Same logic as revit2027 (tested on Windows 11 26H2), with a different download step: Revit 2024 ships as five self-extracting parts that are each checksum-verified, then extracted with the first part's `-suppresslaunch -d` switch.
+Verified on Windows 11 26H2 (workstation with Revit 2024.3 and Revit 2026 installed):
+
+- All five Autodesk download parts are live and match the package's SHA-256 checksums.
+- The first part extracts the full set with `-suppresslaunch -d <folder>` and waits until done. `Setup.exe` lands in a `Revit_2024_G1_Win_64bit_dlm` subfolder, which the package finds.
+- Autodesk's manifest for this download reports version 24.0.4.427, matching the package version.
+- With a newer Revit 2024 already installed (24.3.40.26), the package correctly reports it as installed and changes nothing.
+- Works on Chocolatey 1.1.0 (the version JumpCloud pins) as well as 2.x.
+
+The install and uninstall steps use the same Autodesk `Setup.exe -q` and ODIS uninstall logic as revit2027, which was tested end to end on Windows 11 26H2.
 
 Tip: if you run this in a console window, don't click inside it while it works. Windows QuickEdit mode pauses the script until you press Esc or Enter.
 
